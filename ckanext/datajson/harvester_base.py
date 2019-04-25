@@ -19,6 +19,8 @@ from jsonschema import FormatChecker
 
 from sqlalchemy.exc import IntegrityError
 
+from .helpers import reverse_accrual_periodicity_dict
+
 import logging
 log = logging.getLogger("harvester")
 
@@ -642,6 +644,12 @@ class DatasetHarvesterBase(HarvesterBase):
                     extras.append({"key": mini_key[8:], "value": mini_value})
                 else:
                     pkg[mini_key] = mini_value
+
+        # fix for accrual_periodicity
+        if 'accrual_periodicity' in pkg:
+            ap = pkg['accrual_periodicity']
+            pkg['accrual_periodicity'] = \
+                reverse_accrual_periodicity_dict.get(ap, ap)
 
         # pick a fix number of unmapped entries and put into extra
         if unmapped:
