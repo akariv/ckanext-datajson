@@ -249,6 +249,8 @@ accrual_periodicity_dict = {
     'continuously updated': 'R/PT1S',
     'monthly': 'R/P1M',
     'quarterly': 'R/P3M',
+    'every five years': 'R/P5Y',
+    'every eight years': 'R/P8Y',
     'semimonthly': 'R/P0.5M',
     'three times a year': 'R/P4M',
     'weekly': 'R/P1W',
@@ -269,3 +271,4 @@ reverse_accrual_periodicity_dict = dict((v, k[0].upper() + k[1:].lower())
                                         in accrual_periodicity_dict.iteritems()
                                         if v.startswith('R/'))
 reverse_accrual_periodicity_dict['irregular'] = 'Irregular'
+reverse_accrual_periodicity_dict['R/P0.25Y'] = 'Quarterly'
