@@ -440,6 +440,8 @@ class DatasetHarvesterBase(HarvesterBase):
         else:
             lowercase_conversion = False
 
+        log.warn('ADAM schema_version=%r, lowercase_conversion=%r', schema_version, lowercase_conversion)
+        log.warn('ADAM dataset=%r', dataset)
         MAPPING = {
             "title": "title",
             "description": "notes",
@@ -661,6 +663,8 @@ class DatasetHarvesterBase(HarvesterBase):
 
         for k, v in catalog_extras.iteritems():
             extras.append({'key':k, 'value':v})
+
+        log.warn('ADAM extras=%r', extras)
 
         # Set specific information about the dataset.
         self.set_dataset_info(pkg, dataset_processed, dataset_defaults, schema_version)
