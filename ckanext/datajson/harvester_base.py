@@ -481,29 +481,29 @@ class DatasetHarvesterBase(HarvesterBase):
             "title": "title",
             "description": "notes",
             "keyword": "tags",
-            "modified": "extras__modified", # ! revision_timestamp
-            "publisher": "extras__publisher", # !owner_org
+            "modified": "modified", # ! revision_timestamp
+            "publisher": "publisher", # !owner_org
             "contactPoint": {"fn":"maintainer", "hasEmail":"maintainer_email"},
             "identifier": "extras__identifier", # !id
-            "accessLevel": "extras__public_access_level",
+            "accessLevel": "public_access_level",
 
-            "bureauCode": "extras__bureau_code[]",
-            "programCode": "extras__program_code[]",
+            "bureauCode": "bureau_code[]",
+            "programCode": "program_code[]",
             "rights": "extras__rights",
             "license": "extras__license", # !license_id
-            "spatial": "extras__spatial", # Geometry not valid GeoJSON, not indexing
-            "temporal": "extras__temporal",
+            "spatial": "spatial", # Geometry not valid GeoJSON, not indexing
+            "temporal": "temporal",
 
             "theme": "extras__theme",
-            "dataDictionary": "extras__dataDictionary", # !data_dict
-            "dataQuality": "extras__dataQuality",
-            "accrualPeriodicity":"extras__accrualPeriodicity",
-            "landingPage": "extras__landingPage",
-            "language": "extras__language",
-            "primaryITInvestmentUII": "extras__primaryITInvestmentUII", # !PrimaryITInvestmentUII
+            "dataDictionary": "data_dictionary", # !data_dict
+            "dataQuality": "data_quality",
+            "accrualPeriodicity":"accrual_periodicity",
+            "landingPage": "homepage_url",
+            "language": "language",
+            "primaryITInvestmentUII": "primary_it_investment_uii", # !PrimaryITInvestmentUII
             "references": "extras__references",
             "issued": "extras__issued",
-            "systemOfRecords": "extras__systemOfRecords",
+            "systemOfRecords": "system_of_records",
 
             "distribution": None,
         }
