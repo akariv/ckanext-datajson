@@ -264,7 +264,8 @@ accrual_periodicity_dict = {
     'not updated': 'irregular'
 }
 
-reverse_accrual_periodicity_dict = dict((v, k)
+reverse_accrual_periodicity_dict = dict((v, k.title())
                                         for k, v
                                         in accrual_periodicity_dict.iteritems()
                                         if v.startswith('R/'))
+reverse_accrual_periodicity_dict['irregular'] = 'Irregular'

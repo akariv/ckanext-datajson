@@ -482,9 +482,9 @@ class DatasetHarvesterBase(HarvesterBase):
         MAPPING_V1_1 = {
             "title": "title",
             "description": "notes",
-            "keyword": "tag_string[]",
+            "keyword": "tags[]",
             "modified": "modified", # ! revision_timestamp
-            "publisher": "publisher", # !owner_org
+            "publisher": {"name": "publisher"}, # !owner_org
             "contactPoint": {"fn":"contact_name", "hasEmail":"contact_email"},
             "identifier": "unique_id", # !id
             "accessLevel": "public_access_level",
@@ -650,6 +650,10 @@ class DatasetHarvesterBase(HarvesterBase):
             ap = pkg['accrual_periodicity']
             pkg['accrual_periodicity'] = \
                 reverse_accrual_periodicity_dict.get(ap, ap)
+        
+        # fix for tag_string
+        if 'tags' in pkg:
+            pkg['tag_string'] = ','.join(pkg['tags']
 
         # pick a fix number of unmapped entries and put into extra
         if unmapped:
