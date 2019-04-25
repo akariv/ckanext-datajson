@@ -480,17 +480,17 @@ class DatasetHarvesterBase(HarvesterBase):
         MAPPING_V1_1 = {
             "title": "title",
             "description": "notes",
-            "keyword": "tags",
+            "keyword": "tag_string[]",
             "modified": "modified", # ! revision_timestamp
             "publisher": "publisher", # !owner_org
-            "contactPoint": {"fn":"maintainer", "hasEmail":"maintainer_email"},
-            "identifier": "extras__identifier", # !id
+            "contactPoint": {"fn":"contact_name", "hasEmail":"contact_email"},
+            "identifier": "unique_id", # !id
             "accessLevel": "public_access_level",
 
             "bureauCode": "bureau_code[]",
             "programCode": "program_code[]",
             "rights": "extras__rights",
-            "license": "extras__license", # !license_id
+            "license": "license_id", # !license_id
             "spatial": "spatial", # Geometry not valid GeoJSON, not indexing
             "temporal": "temporal",
 
