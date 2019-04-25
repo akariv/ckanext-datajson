@@ -487,8 +487,8 @@ class DatasetHarvesterBase(HarvesterBase):
             "identifier": "extras__identifier", # !id
             "accessLevel": "extras__public_access_level",
 
-            "bureauCode": "extras__bureau_code",
-            "programCode": "extras__program_code",
+            "bureauCode": "extras__bureau_code[]",
+            "programCode": "extras__program_code[]",
             "rights": "extras__rights",
             "license": "extras__license", # !license_id
             "spatial": "extras__spatial", # Geometry not valid GeoJSON, not indexing
@@ -510,10 +510,10 @@ class DatasetHarvesterBase(HarvesterBase):
 
         SKIP = ["accessURL", "webService", "format", "distribution"] # will go into pkg["resources"]
         # also skip the processed_how key, it was added to indicate how we processed the dataset.
-        SKIP.append("processed_how");
+        SKIP.append("processed_how")
 
         SKIP_V1_1 = ["@type", "isPartOf", "distribution"]
-        SKIP_V1_1.append("processed_how");
+        SKIP_V1_1.append("processed_how")
 
         if lowercase_conversion:
 
@@ -636,6 +636,10 @@ class DatasetHarvesterBase(HarvesterBase):
             for mini_key, mini_value in mini_dataset.iteritems():
                 if not mini_value:
                     continue
+                if mini_key.endswith('[]'):
+                    mini_key = mini_key[:-2]
+                    mini_value = ','.join(mini_value)
+
                 if mini_key.startswith('extras__'):
                     extras.append({"key": mini_key[8:], "value": mini_value})
                 else:
