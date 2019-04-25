@@ -482,7 +482,7 @@ class DatasetHarvesterBase(HarvesterBase):
         MAPPING_V1_1 = {
             "title": "title",
             "description": "notes",
-            "keyword": "tags[]",
+            "keyword": "tags",
             "modified": "modified", # ! revision_timestamp
             "publisher": {"name": "publisher"}, # !owner_org
             "contactPoint": {"fn":"contact_name", "hasEmail":"contact_email"},
