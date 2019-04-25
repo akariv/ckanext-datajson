@@ -499,7 +499,7 @@ class DatasetHarvesterBase(HarvesterBase):
             "dataQuality": "data_quality",
             "accrualPeriodicity":"accrual_periodicity",
             "landingPage": "homepage_url",
-            "language": "language",
+            "language": "language[]",
             "primaryITInvestmentUII": "primary_it_investment_uii", # !PrimaryITInvestmentUII
             "references": "extras__references",
             "issued": "extras__issued",
@@ -620,10 +620,8 @@ class DatasetHarvesterBase(HarvesterBase):
             new_keys = []
             values = []
             if isinstance(new_key, dict): # when schema is not 1.0
-                _new_key_keys = new_key.keys()
-                new_keys = new_key.values()
-                values = []
-                for _key in _new_key_keys:
+                for _key, _value in new_key.iteritems():
+                    new_keys.append(_key)
                     values.append(value.get(_key))
             else:
                 new_keys.append(new_key)
@@ -669,6 +667,7 @@ class DatasetHarvesterBase(HarvesterBase):
             extras.append({'key':k, 'value':v})
 
         log.warn('ADAM extras=\n%s\n', '\n'.join('%s: %r' % (x['key'], x['value']) for x in extras))
+        log.warn('ADAM pkg=\n%s\n', '\n'.join('%s: %r' % (k, v) for x in pkg.iteritems() if k != 'extras'))
 
         # Set specific information about the dataset.
         self.set_dataset_info(pkg, dataset_processed, dataset_defaults, schema_version)
