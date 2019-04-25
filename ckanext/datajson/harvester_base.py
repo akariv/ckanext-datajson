@@ -485,10 +485,10 @@ class DatasetHarvesterBase(HarvesterBase):
             "publisher": "extras__publisher", # !owner_org
             "contactPoint": {"fn":"maintainer", "hasEmail":"maintainer_email"},
             "identifier": "extras__identifier", # !id
-            "accessLevel": "extras__accessLevel",
+            "accessLevel": "extras__public_access_level",
 
-            "bureauCode": "extras__bureauCode",
-            "programCode": "extras__programCode",
+            "bureauCode": "extras__bureau_code",
+            "programCode": "extras__program_code",
             "rights": "extras__rights",
             "license": "extras__license", # !license_id
             "spatial": "extras__spatial", # Geometry not valid GeoJSON, not indexing
