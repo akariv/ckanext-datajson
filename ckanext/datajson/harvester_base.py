@@ -621,7 +621,7 @@ class DatasetHarvesterBase(HarvesterBase):
             values = []
             if isinstance(new_key, dict): # when schema is not 1.0
                 for _key, _value in new_key.iteritems():
-                    new_keys.append(_key)
+                    new_keys.append(_value)
                     values.append(value.get(_key))
             else:
                 new_keys.append(new_key)
