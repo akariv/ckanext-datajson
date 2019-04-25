@@ -667,7 +667,7 @@ class DatasetHarvesterBase(HarvesterBase):
             extras.append({'key':k, 'value':v})
 
         log.warn('ADAM extras=\n%s\n', '\n'.join('%s: %r' % (x['key'], x['value']) for x in extras))
-        log.warn('ADAM pkg=\n%s\n', '\n'.join('%s: %r' % (k, v) for x in pkg.iteritems() if k != 'extras'))
+        log.warn('ADAM pkg=\n%s\n', '\n'.join('%s: %r' % (k, v) for k, v in pkg.iteritems() if k != 'extras'))
 
         # Set specific information about the dataset.
         self.set_dataset_info(pkg, dataset_processed, dataset_defaults, schema_version)
